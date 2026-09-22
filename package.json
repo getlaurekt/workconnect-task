@@ -24,5 +24,10 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@tanstack/react-form-nextjs": "^1.33.5",
+    "nuqs": "^2.10.1",
+    "zod": "^4.6.5"
+  }
 }

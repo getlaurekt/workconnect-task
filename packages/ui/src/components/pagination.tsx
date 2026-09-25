@@ -1,4 +1,6 @@
 import * as React from "react"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
 import { cn } from "cn"
 
 import { Button } from "@workspace/ui/components/button"
@@ -40,28 +42,32 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 type PaginationLinkProps = {
   isActive?: boolean
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+  useRender.ComponentProps<"a">
 
 function PaginationLink({
   className,
   isActive,
   size = "icon",
+  render,
   ...props
 }: PaginationLinkProps) {
+  const link = useRender({
+    defaultTagName: "a",
+    render,
+    props: mergeProps<"a">(
+      { "aria-current": isActive ? "page" : undefined },
+      props
+    ),
+    state: { slot: "pagination-link", active: isActive },
+  })
+
   return (
     <Button
       variant="link"
       size={size}
       className={cn(className)}
       nativeButton={false}
-      render={
-        <a
-          aria-current={isActive ? "page" : undefined}
-          data-slot="pagination-link"
-          data-active={isActive}
-          {...props}
-        />
-      }
+      render={link}
     />
   )
 }

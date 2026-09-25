@@ -4,6 +4,8 @@ Aplikacja została stworzona przy pomocy templatki `shadcn/ui monorepo template`
 
 ## Aplikacja dostępna pod linkami
 
+- [https://tiny-sawine-6e8425.netlify.app](https://tiny-sawine-6e8425.netlify.app)
+
 ## Instalacja
 
 Wymagania:

@@ -1,19 +1,15 @@
-import { Button } from "@workspace/ui/components/button"
+import { connection } from "next/server"
 
-export default function Page() {
+import { ProductCatalog } from "@/components/products/product-catalog"
+
+export default async function Page() {
+  await connection()
+
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
+    <main className="@container/list min-h-svh bg-neutral-50 px-4 py-6 md:px-8 md:py-12.5 dark:bg-background">
+      <div className="mx-auto flex w-full max-w-310 flex-col gap-4 @4xl/list:gap-6">
+        <ProductCatalog />
       </div>
-    </div>
+    </main>
   )
 }
